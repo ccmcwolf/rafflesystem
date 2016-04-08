@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+
+	<class name="entity.RaffleCampaign" table="raffle_campaign">
+		<id name="campaign_id" type="int">
+			<column name="campaign_id" />
+			<generator class="native" />
+		</id>
+
+		<property name="campaign_name" type="string" column="campaign_name"></property>
+
+		<property name="organizer_name" type="string" column="organizer_name"></property>
+
+		<property name="contact_email" type="string" column="contact_email"></property>
+
+		<property name="raffle_count" type="int" column="raffle_count"></property>
+
+		<property name="start_date" type="string" column="start_date"></property>
+
+		<property name="end_date" type="string" column="end_date"></property>
+
+		<property name="min_price" column="min_price"></property>
+
+		<property name="raffle_image_preview_path" type="string"
+			column="raffle_image_preview_path"></property>
+
+		<set name="raffles" table="raffle" inverse="true" lazy="true"
+			fetch="select">
+			<key column="raffle_id"></key>
+			<one-to-many class="entity.Raffle" />
+		</set>
+	</class>
+
+
+
+
+	<class name="entity.Raffle" table="raffle">
+		<id name="raffle_id" type="int">
+			<column name="raffle_id" />
+			<generator class="native" />
+		</id>
+
+		<many-to-one name="campaign" class="entity.RaffleCampaign"
+			fetch="select">
+			<column name="campaign_id" />
+		</many-to-one>
+
+		<property name="raffle_no" type="int" column="raffle_no"></property>
+
+		<property name="is_exists" type="string" column="is_exists"></property>
+
+		<property name="buy_price" column="buy_price"></property>
+	</class>
+
+</hibernate-mapping>
