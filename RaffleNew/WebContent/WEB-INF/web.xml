@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Raffle_New</display-name>
+	<context-param>
+		<param-name>host</param-name>
+		<param-value>smtp.gmail.com</param-value>
+	</context-param>
+	<context-param>
+		<param-name>port</param-name>
+		<param-value>587</param-value>
+	</context-param>
+	<context-param>
+		<param-name>user</param-name>
+		<param-value>slesportmail@gmail.com</param-value>
+	</context-param>
+	<context-param>
+		<param-name>pass</param-name>
+		<param-value>Amalwick1</param-value>
+	</context-param>
+	<context-param>
+		<description>Location to store uploaded image</description>
+		<param-name>file-upload</param-name>
+		<param-value>raffleImage\</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>UploadImageServlet</servlet-name>
+		<servlet-class>UploadImageServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UploadImageServlet</servlet-name>
+		<url-pattern>/UploadImageServlet</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+        <servlet-name>Checkout</servlet-name>
+        <servlet-class>com.paypal.dg.Checkout</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Checkout</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+
+ <servlet>
+        <servlet-name>OrderConfirm</servlet-name>
+        <servlet-class>com.paypal.dg.OrderConfirm</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderConfirm</servlet-name>
+        <url-pattern>/orderconfirm</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>Cancel</servlet-name>
+        <servlet-class>com.paypal.dg.Cancel</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Cancel</servlet-name>
+        <url-pattern>/cancel</url-pattern>
+    </servlet-mapping>
+	
+</web-app>

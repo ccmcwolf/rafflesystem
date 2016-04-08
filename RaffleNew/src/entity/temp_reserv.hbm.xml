@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="entity.Temp_Reservation" table="temp_reservation_data">
+		<id name="temp_res_id" type="int">
+			<column name="temp_res_id" />
+			<generator class="native" />
+		</id>
+
+		<property name="user_id" type="int" column="user_id"></property>
+
+		<property name="reffle_id" type="int" column="reffle_id"></property>
+	</class>
+</hibernate-mapping>
